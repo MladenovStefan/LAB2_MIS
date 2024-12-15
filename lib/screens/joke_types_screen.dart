@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lab2_stefan_mladenov_201049/widgets/jokes_types_list.dart';
 import '../services/api_services.dart';
-import 'jokes_by_type_screen.dart';
 import 'random_joke_screen.dart';
 
 class JokeTypesScreen extends StatefulWidget {
@@ -63,42 +63,7 @@ class _JokeTypesScreenState extends State<JokeTypesScreen> {
               child: Column(
                 children: [
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: types.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          elevation: 3,
-                          child: ListTile(
-                            leading: Icon(
-                              Icons.category_outlined,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            title: Text(
-                              types[index][0].toUpperCase() +
-                                  types[index].substring(1),
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            trailing:
-                                const Icon(Icons.arrow_forward_ios, size: 18),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      JokesByTypeScreen(type: types[index]),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    ),
+                    child: JokeTypesList(jokeTypes: types),
                   ),
                 ],
               ),

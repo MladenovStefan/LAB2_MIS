@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static const String baseUrl = "https://official-joke-api.appspot.com";
 
-  // Fetch joke types
   static Future<List<String>> fetchJokeTypes() async {
     final response = await http.get(Uri.parse('$baseUrl/types'));
     if (response.statusCode == 200) {
